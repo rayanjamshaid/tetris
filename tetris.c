@@ -18,7 +18,7 @@ void initialise_shape()
 
 void initiate_grid ()
 {
-    for(int i = 0; i < 18; i++)
+    for (int i = 0; i < 18; i++)
     {
         for (int j = 0; j < COLS - 1; j++)
         {
@@ -30,7 +30,7 @@ void initiate_grid ()
 
 void print_grid ()
 {
-    for(int i = 0; i < ROWS; i++)
+    for (int i = 0; i < ROWS; i++)
     {
         printf ("%s", grid[i]);
         printf ("\n");
