@@ -7,17 +7,17 @@ void initiate_grid (char grid[ROWS][COLS])
 {
     for(int i = 0; i < 18; i++)
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < COLS - 1; j++)
         {
             grid[i][j] = '.';
         }
-        grid[i][10] = '\0';
+        grid[i][COLS - 1] = '\0';
     }
 }
 
 void print_grid (char grid[ROWS][COLS])
 {
-    for(int i=0; i < 18; i++)
+    for(int i = 0; i < ROWS; i++)
     {
         printf ("%s", grid[i]);
         printf ("\n");
@@ -27,7 +27,7 @@ void print_grid (char grid[ROWS][COLS])
 
 int main (void)
 {
-    char grid[18][11];
+    char grid[ROWS][COLS];
 	initiate_grid (grid);
     print_grid (grid);
 
