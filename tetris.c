@@ -1,30 +1,35 @@
 #include<stdio.h>
-#include<conio.h>
 
-void initiate_grid(char **grid)
+#define ROWS    18
+#define COLS    11
+
+void initiate_grid (char grid[ROWS][COLS])
 {
-    for(int i=0;i<18;i++)
+    for(int i = 0; i < 18; i++)
     {
-        for(int j=0;j<10;j++)
+        for (int j = 0; j < 10; j++)
         {
-            grid[i][j]='.';
+            grid[i][j] = '.';
         }
-        grid[i][10]='\0';
+        grid[i][10] = '\0';
     }
 }
-void print_grid(char **grid)
+
+void print_grid (char grid[ROWS][COLS])
 {
-    for(int i=0;i<18;i++)
+    for(int i=0; i < 18; i++)
     {
-        printf("%s",grid[i]);
-        printf("\n");
+        printf ("%s", grid[i]);
+        printf ("\n");
     }
 
 }
-int main()
+
+int main (void)
 {
     char grid[18][11];
+	initiate_grid (grid);
+    print_grid (grid);
 
-    getch();
     return 0;
 }
