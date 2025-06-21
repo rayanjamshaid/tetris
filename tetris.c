@@ -2,8 +2,21 @@
 
 #define ROWS    18
 #define COLS    11
+#define SROWS   2
+#define SCOLS   4
 
-void initiate_grid (char grid[ROWS][COLS])
+
+char grid[ROWS][COLS];
+
+char shape[SROWS][SCOLS];
+
+void initialise_shape()
+{
+    char s1[SROWS][SCOLS]
+}
+
+
+void initiate_grid ()
 {
     for(int i = 0; i < 18; i++)
     {
@@ -15,7 +28,7 @@ void initiate_grid (char grid[ROWS][COLS])
     }
 }
 
-void print_grid (char grid[ROWS][COLS])
+void print_grid ()
 {
     for(int i = 0; i < ROWS; i++)
     {
