@@ -15,6 +15,7 @@ void shape_A (void)
         shape[0][i] = '.';
     for (int i = 0; i < S_COLS - 1; i++)
         shape[1][i] = '#';
+        
 }
 
 void initiate_grid (void)
@@ -41,7 +42,9 @@ void print_grid (void)
 
 int main (void)
 {
-    shape_A ();
+    shape_A();
+    initiate_grid();
+    printf("%s",shape);
 
     return 0;
 }
