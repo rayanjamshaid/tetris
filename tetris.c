@@ -7,9 +7,13 @@
 #define BLOCK_ROW 2
 #define BLOCK_COL 4
 
-void initiate_grid(char ** grid)
+char** initiate_grid()
 {
-
+    char **grid=(char**)malloc(ROWS * sizeof(char*));
+    for(int i=0;i<ROWS;i++)
+    {
+        grid[i]=(char*)malloc((COLS+1) * sizeof(char));
+    }
     for(int i=0;i<ROWS;i++)
     {
         for(int j=0;j<COLS;j++)
@@ -18,6 +22,7 @@ void initiate_grid(char ** grid)
         }
         grid[i][10]='\0';
     }
+    return grid;
 }
 void print_grid(char ** grid)
 {
@@ -56,13 +61,7 @@ void gameplay()
 int main()
 {
     /*starting making the grids and blocks*/
-    char **grid=(char**)malloc(ROWS * sizeof(char*));
-    for(int i=0;i<ROWS;i++)
-    {
-        grid[i]=(char*)malloc((COLS+1) * sizeof(char));
-    }
-
-    initiate_grid(grid);
+    char **grid=initiate_grid();
 
 
     char **bar=(char**)malloc(BLOCK_ROW * sizeof(char*));
@@ -86,10 +85,15 @@ int main()
     
 
 
-
+    /*freeing the data*/
     for (int i = 0; i < 18; i++) {
         free(grid[i]);
     }
     free(grid);
+    for(int i = 0; i < 2; i++) {
+        free(bar[i]);
+    }
+    free(bar);
+    /*ending freeing the data*/
     return 0;
 }
