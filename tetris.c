@@ -1,50 +1,95 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-#define ROWS    18
-#define COLS    11
-#define S_ROWS   2
-#define S_COLS   4
+#define ROWS 18
+#define COLS 10
 
+#define BLOCK_ROW 2
+#define BLOCK_COL 4
 
-char grid[ROWS][COLS];
-char shape[S_ROWS][S_COLS];
-
-void shape_A (void)
+void initiate_grid(char ** grid)
 {
-    for (int i = 0; i < S_COLS - 1; i++)
-        shape[0][i] = '.';
-    for (int i = 0; i < S_COLS - 1; i++)
-        shape[1][i] = '#';
-        
-}
 
-void initiate_grid (void)
-{
-    for (int i = 0; i < 18; i++)
+    for(int i=0;i<ROWS;i++)
     {
-        for (int j = 0; j < COLS - 1; j++)
+        for(int j=0;j<COLS;j++)
         {
-            grid[i][j] = '.';
+            grid[i][j]='.';
         }
-        grid[i][COLS - 1] = '\0';
+        grid[i][10]='\0';
     }
 }
-
-void print_grid (void)
+void print_grid(char ** grid)
 {
-    for (int i = 0; i < ROWS; i++)
+    printf("!|/\\/\\/\\/\\/\\|!\n");
+    for(int i=0;i<ROWS;i++)
     {
-        printf ("%s", grid[i]);
-        printf ("\n");
+        printf("!|");
+        for(int j=0;j<COLS;j++)
+        {
+            printf("%c",grid[i][j]);
+        }
+        printf("|!");
+        printf("\n");
+        
     }
+    printf("!|\\/\\/\\/\\/\\/|!\n");
 
 }
-
-int main (void)
+void clr_scr()
 {
-    shape_A();
-    initiate_grid();
-    printf("%s",shape);
+    #ifdef _WIN32
+    system("cls");
+    #elif __linux__
+    system("clear");
+    #elif __APPLE__
+    system("clear");
+    #endif
+}
 
+
+void gameplay()
+{
+    
+}
+
+int main()
+{
+    /*starting making the grids and blocks*/
+    char **grid=(char**)malloc(ROWS * sizeof(char*));
+    for(int i=0;i<ROWS;i++)
+    {
+        grid[i]=(char*)malloc((COLS+1) * sizeof(char));
+    }
+
+    initiate_grid(grid);
+
+
+    char **bar=(char**)malloc(BLOCK_ROW * sizeof(char*));
+    for(int i=0;i<2;i++)
+    {
+        bar[i]=(char*)malloc((BLOCK_COL+1) * sizeof(char));
+    }
+    bar[0][0]='#'; bar[0][1]='#'; bar[0][2]='#'; bar[0][3]='#'; bar[0][4]='\0';
+    bar[1][0]='.'; bar[1][1]='.'; bar[1][2]='.'; bar[1][3]='.'; bar[1][4]='\0';
+
+
+    /*ending making the grids and blocks */
+
+
+    while(1)
+    {
+        print_grid(grid);
+        gameplay();
+        clr_scr();
+    }
+    
+
+
+
+    for (int i = 0; i < 18; i++) {
+        free(grid[i]);
+    }
+    free(grid);
     return 0;
 }
