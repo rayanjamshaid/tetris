@@ -14,16 +14,33 @@ void initiate_grid(char ** grid)
 }
 void print_grid(char ** grid)
 {
+    printf("!|/\\/\\/\\/\\/\\|!\n");
     for(int i=0;i<18;i++)
     {
+        printf("!|");
         for(int j=0;j<10;j++)
         {
             printf("%c",grid[i][j]);
         }
+        printf("|!");
         printf("\n");
+        
     }
+    printf("!|\\/\\/\\/\\/\\/|!\n");
 
 }
+void clr_scr()
+{
+    #ifdef _WIN32
+    system("cls");
+    #elif __linux__
+    system("clear");
+    #elif __APPLE__
+    system("clear");
+    #endif
+}
+
+
 int main()
 {
     char **grid=(char**)malloc(18 * sizeof(char*));
@@ -33,8 +50,15 @@ int main()
     }
 
     initiate_grid(grid);
-    print_grid(grid);
+
+    while(1)
+    {
+        print_grid(grid);
+        clr_scr();
+    }
     
+
+
 
     for (int i = 0; i < 18; i++) {
         free(grid[i]);
