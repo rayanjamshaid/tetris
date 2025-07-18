@@ -74,6 +74,9 @@ int main()
     bar[1][0]='.'; bar[1][1]='.'; bar[1][2]='.'; bar[1][3]='.'; bar[1][4]='\0';
 
 
+
+    
+
     /*ending making the grids and blocks */
 
 
